@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from django.http  import HttpResponse,Http404
 import datetime as dt
 from .models import Article
+from .forms import NewsLetterForm
+
 
 
 
@@ -9,8 +11,14 @@ from .models import Article
 def news_today(request):
     date = dt.date.today()
     news = Article.todays_news()
-    return render(request, 'all-news/today-news.html', {"date": date,"news":news})
-
+    #NewsLetterForm
+    if request.method == 'POST':
+        form = NewsLetterForm(request.POST)
+        if form.is_valid():
+            print('valid')
+    else:
+        form = NewsLetterForm()
+    return render(request, 'all-news/today-news.html', {"date": date,"news":news,"letterForm":form})
 
 # View Function to present news from past days
 def past_days_news(request, past_date):
