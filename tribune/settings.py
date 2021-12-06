@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tinymce',
 ]
 
 MIDDLEWARE = [
@@ -124,6 +125,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+#login redirect
+LOGIN_REDIRECT_URL = 'newsToday'
 #Email configurations
 EMAIL_USE_TLS = config('EMAIL_USE_TLS')
 EMAIL_HOST = config('EMAIL_HOST')
