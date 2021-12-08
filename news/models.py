@@ -46,4 +46,9 @@ class NewsLetterRecipients(models.Model):
     '''
     name = models.CharField(max_length = 30)
     email = models.EmailField()
+#Model to demonstrate how to create an API 
+class MoringaMerch(models.Model):
+    name = models.CharField(max_length=40)
+    description = models.TextField()
+    price = models.DecimalField(decimal_places=2, max_digits=20)
   
