@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tinymce',
     'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -177,3 +178,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
 
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
