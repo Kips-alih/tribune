@@ -88,16 +88,12 @@ def new_article(request):
 
 #API view to handle the requets.
 class MerchList(APIView):
+    permission_classes = (IsAdminOrReadOnly,)
     def get(self, request, format=None):
         all_merch = MoringaMerch.objects.all()
         serializers = MerchSerializer(all_merch, many=True)
-        permission_classes = (IsAdminOrReadOnly)
         return Response(serializers.data)
 
-
-
-
-#Handle post requests.
     def post(self, request, format=None):
         serializers = MerchSerializer(data=request.data)
         if serializers.is_valid():
